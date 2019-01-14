@@ -1,0 +1,21 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  @media only screen and (max-width: 576px) {
+    font-size: 80%;
+  }
+  @media only screen and (max-width: 768px) {
+    font-size: 90%;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: $font--lobster;
+  background: $pink-darker;  /* fallback for old browsers */
+  background: linear-gradient(to right, $pink-darker, $pink-lighter);
+}

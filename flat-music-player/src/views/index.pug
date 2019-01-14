@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(name="description" content="")
+    link(rel="author" href="human.txt")
+    title Flat Music Player
+  body   
+    //- Scene
+    main.scene
+      
+      //- Player
+      section.player.js-player
+        
+        //- Player status: Song, Singer and Progressbar
+        .status
+          .status__inner
+            //- Song information
+            h1.status__title Stories from Emona I
+            h2.status__subtitle maya filipic
+            
+            //- Progressbar
+            .progressbar
+              .progressbar__progress.js-progress
+        
+        //- Player Console: Song Cover and Control Buttons
+        .console
+          //- CD cover
+          .cover
+            .cover__thumbnail
+              img(src="../img/cover.jpg", alt="MAYA FILIPIČ - Stories from Emona I (2008)")
+
+          //- Control Buttons
+          .control__buttons
+            button(class="control__button js-backward")
+              i.fa.fa-backward
+            button(class="control__button js-play")
+              i.fa.fa-play
+            button(class="control__button js-forward")
+              i.fa.fa-forward
+
+    //- Loading
+    section.loading.js-loading
+          h2.loading__text LOADING...
+  
+  

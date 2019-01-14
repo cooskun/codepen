@@ -1,0 +1,225 @@
+/* Scene */
+.scene {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Player */
+.player {
+  width: 600px;
+  max-width: 90vw;
+  position: relative;
+}
+
+/* Player Status : Song, Artist, Progressbar */
+.status {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-areas: ". information-content";
+
+  width: 95%;
+  height: 100%;
+  overflow: hidden;
+  padding: 1rem;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  margin: auto;
+
+  background-color: $white-darker;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  transition: bottom 0.6s linear;
+  will-change: bottom;
+
+  // Parental State
+  .player.is-playing & {
+    bottom: 98%;
+  }
+
+  &__inner {
+    grid-area: information-content;
+  }
+}
+
+/* Title: Formerly Song Name */
+.status__title {
+  color: $purple;
+  font-size: 1rem;
+  text-transform: capitalize;
+
+  @media only screen and (max-width: 576px) {
+    margin: 0;
+  }
+}
+
+/* Subtitle: Formerly Artist Name */
+.status__subtitle {
+  color: $purple;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: capitalize;
+
+  @media only screen and (max-width: 576px) {
+    margin: 0;
+  }
+}
+
+/* Progressbar */
+.progressbar {
+  width: 100%;
+  height: .7rem;
+  overflow: hidden;
+  backface-visibility: hidden;
+  margin-top: 1rem;
+  border-radius: 5px;
+  background: $pink;
+
+  @media only screen and (max-width: 576px) {
+    margin-top: .8rem;
+  }
+}
+
+/* Progressbar Progress (Inner) */
+.progressbar__progress {
+  width: 0;
+  height: 100%;
+  background: $purple;
+  will-change: width;
+}
+
+/* Console : Cover and Control Buttons */
+.console {
+  display: grid;
+  grid-template-areas: "cover control-buttons";
+  grid-template-columns: 30% 70%;
+  border-radius: 10px;
+  background-color: $white;
+  box-shadow: 0 50px 100px -10px rgba(0, 0, 0, 0.3);
+}
+
+/* Song Cover (Wrapper for cover thumbnail) */
+.cover {
+  grid-area: cover; 
+}
+
+/* Cover Thumbnail */
+.cover__thumbnail {
+  $thumbnail-size: 70%;
+  $cover-circle-size: $thumbnail-size / 5;
+
+  width: $thumbnail-size;
+  height: 100%;
+  margin: 0 auto;
+  font-size: 0;
+  @extend %cover-animation-setup;
+
+  // Parental State
+  .player.is-playing & {
+    @extend %cover-animation-start;
+  }
+
+  &::after {
+    content: "";
+    width: $cover-circle-size;
+    height: $cover-circle-size;
+    background: $white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    animation: rotating 10s linear infinite paused;
+    will-change: transform;
+  }
+
+  // Rotating Animation
+  @at-root {
+    @keyframes rotating {
+      from {
+        transform: rotate(0);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+/* Control Buttons : Play, Pause, Forward, Backward */
+.control__buttons {
+  grid-area: control-buttons;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+}
+
+/* Control Button */
+.control__button {  
+  @extend %button-reset;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+  will-change: background-color;  
+
+  &:hover {
+    background-color: $gray;
+
+    i { 
+      color: $white 
+    }
+  }
+
+  i {
+    color: $gray;
+    font-size: 2rem;    
+    will-change: color;
+  }
+}
+
+/* Loading Screen */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: $pink-darker;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  will-change: opacity;
+
+  &.is-loaded {
+    opacity: 0;
+  }
+}
+
+/* Loading Text */
+.loading__text {
+  font-size: 12vw;
+  font-style: italic;
+  color: $white-darker;
+}
