@@ -1,0 +1,805 @@
+/* Colors */
+/* Typography */
+/* Key Sizes */
+/* Other Options */
+/* SVGs */
+.keyboard-group, .touchpad {
+  -webkit-box-shadow: inset 0.5px 0.5px #88898b, inset -0.5px -0.5px #88898b;
+          box-shadow: inset 0.5px 0.5px #88898b, inset -0.5px -0.5px #88898b;
+}
+
+.keyboard__key, .keyboard__key--enter::after {
+  -webkit-box-shadow: 0 1px #88898b;
+          box-shadow: 0 1px #88898b;
+}
+
+.keyboard__key, .keyboard__key--enter::after {
+  -webkit-transform: translate(0);
+          transform: translate(0);
+  -webkit-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+  will-change: transform, box-shadow;
+}
+
+.keyboard__key:hover, .keyboard__key:focus {
+  -webkit-transform: translate(0px, 0.5px);
+          transform: translate(0px, 0.5px);
+  -webkit-box-shadow: 0px 0.5px #88898b;
+          box-shadow: 0px 0.5px #88898b;
+}
+
+.keyboard__key--enter:hover::after, .keyboard__key--enter:focus::after {
+  -webkit-box-shadow: 0px 0.5px #88898b;
+          box-shadow: 0px 0.5px #88898b;
+  outline: none;
+}
+
+.touchbar__frame {
+  border: 0;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out;
+  will-change: transform, border;
+}
+
+.touchbar__frame.active, .touchbar__frame:hover, .touchbar__frame:focus {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  border: 0.5px solid #dddee2;
+  border-radius: 1px;
+  z-index: 1;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #8BC6EC;
+  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+}
+
+/* Scene */
+.scene {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+/* Macbook Body */
+.macbook__body {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 7.5px 4px;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  -ms-grid-columns: 74.25px 609px 74.25px;
+      grid-template-columns: 74.25px 609px 74.25px;
+      grid-template-areas: "left-speaker keyboard right-speaker" ". touchpad .";
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 780px;
+  height: 532.5px;
+  padding-top: 57px;
+  padding-bottom: 12px;
+  position: relative;
+  border-radius: 16px;
+  background-color: #edeef0;
+}
+
+.macbook__body__snick {
+  width: 108px;
+  height: 4.5px;
+  -webkit-box-shadow: inset 1px 1px 3px #88898b;
+          box-shadow: inset 1px 1px 3px #88898b;
+  border-radius: 7px 7px 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+/* Speaker */
+.speaker {
+  width: 74.25px;
+  height: 224.25px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Capa_1" x="0px" y="0px" style="enable-background:new 0 0 88 88" version="1.1" viewBox="0 0 88 88" xml:space="preserve"><path d="M11,0C4.926,0,0,4.926,0,11s4.926,11,11,11s11-4.926,11-11S17.074,0,11,0z"/></svg>') repeat;
+  background-size: 1.5px;
+}
+
+.speaker--left {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: left-speaker;
+}
+
+.speaker--right {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: right-speaker;
+}
+
+/* Keyboard Group: Touchbar and Keyboard */
+.keyboard-group {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 3px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: keyboard;
+  -ms-grid-row-align: center;
+      align-self: center;
+  width: 609px;
+  padding: 7.5px;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: #edeef0;
+}
+
+/* Touchbar */
+.touchbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 594px;
+  padding: 5px 24px;
+  background-color: #202125;
+  border-radius: 3px;
+}
+
+/* Touchbar Key Group */
+.touchbar__key-group {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[4];
+      grid-template-columns: repeat(4, auto);
+  grid-column-gap: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+.touchbar__key-group--functions {
+  -ms-grid-columns: (auto)[5];
+      grid-template-columns: repeat(5, auto);
+  grid-column-gap: 1px;
+}
+
+/* Touchbar Key */
+.touchbar__key {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 33px;
+  height: 15px;
+  padding: 0;
+  border: 0;
+  border-radius: 2.25px;
+  color: #dddee2;
+  background-color: #525358;
+  font-size: 0.6rem;
+}
+
+.touchbar__key-group--functions .touchbar__key {
+  border-radius: 0;
+}
+
+.touchbar__key-group--functions .touchbar__key:first-child {
+  border-top-left-radius: 2.25px;
+  border-bottom-left-radius: 2.25px;
+}
+
+.touchbar__key-group--functions .touchbar__key:last-child {
+  border-top-right-radius: 2.25px;
+  border-bottom-right-radius: 2.25px;
+}
+
+.touchbar__key--esc {
+  margin-right: 3px;
+}
+
+.touchbar__key--left {
+  width: 7.5px;
+}
+
+.touchbar__key__icon {
+  max-width: 70%;
+  max-height: 70%;
+  fill: currentColor;
+}
+
+.touchbar__key--left .touchbar__key__icon {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Touchbar Frame Group */
+.touchbar__frame-group {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (6.75px)[36];
+      grid-template-columns: repeat(36, 6.75px);
+  grid-column-gap: 1px;
+  position: relative;
+}
+
+.touchbar__frame-group::before, .touchbar__frame-group::after {
+  content: "";
+  width: 22.5px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.touchbar__frame-group::before {
+  left: 0;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(10%, black), color-stop(20%, rgba(0, 0, 0, 0.9)), color-stop(30%, rgba(0, 0, 0, 0.8)), color-stop(40%, rgba(0, 0, 0, 0.7)), color-stop(50%, rgba(0, 0, 0, 0.6)), color-stop(60%, rgba(0, 0, 0, 0.5)), color-stop(70%, rgba(0, 0, 0, 0.4)), color-stop(80%, rgba(0, 0, 0, 0.3)), color-stop(90%, rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.1)));
+  background-image: linear-gradient(90deg, black 10%, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.touchbar__frame-group::after {
+  right: 0;
+  background-image: -webkit-gradient(linear, right top, left top, color-stop(10%, black), color-stop(20%, rgba(0, 0, 0, 0.9)), color-stop(30%, rgba(0, 0, 0, 0.8)), color-stop(40%, rgba(0, 0, 0, 0.7)), color-stop(50%, rgba(0, 0, 0, 0.6)), color-stop(60%, rgba(0, 0, 0, 0.5)), color-stop(70%, rgba(0, 0, 0, 0.4)), color-stop(80%, rgba(0, 0, 0, 0.3)), color-stop(90%, rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.1)));
+  background-image: linear-gradient(-90deg, black 10%, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.8) 30%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+/* Touchbar Frame */
+.touchbar__frame {
+  width: 6.75px;
+  height: 12px;
+}
+
+.touchbar__frame:nth-of-type(1) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(10deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(2) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(20deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(3) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(30deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(4) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(40deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(5) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(50deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(6) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(60deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(7) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(70deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(8) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(80deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(9) {
+  background-color: #52ACFF;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, #FFE32C), to(#52ACFF));
+  background-image: linear-gradient(90deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(10) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(100deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(11) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(110deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(12) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(120deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(13) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(130deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(14) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(140deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(15) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(150deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(16) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(160deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(17) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(170deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(18) {
+  background-color: #52ACFF;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(25%, #FFE32C), to(#52ACFF));
+  background-image: linear-gradient(180deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(19) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(190deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(20) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(200deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(21) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(210deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(22) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(220deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(23) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(230deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(24) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(240deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(25) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(250deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(26) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(260deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(27) {
+  background-color: #52ACFF;
+  background-image: -webkit-gradient(linear, right top, left top, color-stop(25%, #FFE32C), to(#52ACFF));
+  background-image: linear-gradient(270deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(28) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(280deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(29) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(290deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(30) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(300deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(31) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(310deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(32) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(320deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(33) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(330deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(34) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(340deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(35) {
+  background-color: #52ACFF;
+  background-image: linear-gradient(350deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+.touchbar__frame:nth-of-type(36) {
+  background-color: #52ACFF;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(25%, #FFE32C), to(#52ACFF));
+  background-image: linear-gradient(360deg, #FFE32C 25%, #52ACFF 100%);
+}
+
+/* Keyboard */
+.keyboard {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 3px;
+  width: 594px;
+}
+
+/* Keyboard Row */
+.keyboard__row {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 3px;
+  -ms-grid-columns: (minmax(38.25px, max-content))[14];
+      grid-template-columns: repeat(14, minmax(38.25px, -webkit-max-content));
+      grid-template-columns: repeat(14, minmax(38.25px, max-content));
+}
+
+.keyboard__row:nth-child(3) {
+  -ms-grid-columns: (minmax(27.54px, max-content))[14];
+      grid-template-columns: repeat(14, minmax(27.54px, -webkit-max-content));
+      grid-template-columns: repeat(14, minmax(27.54px, max-content));
+}
+
+.keyboard__row:nth-child(4) {
+  -ms-grid-columns: (minmax(38.25px, max-content))[13];
+      grid-template-columns: repeat(13, minmax(38.25px, -webkit-max-content));
+      grid-template-columns: repeat(13, minmax(38.25px, max-content));
+}
+
+.keyboard__row:last-child {
+  -ms-grid-columns: (minmax(38.25px, max-content))[10];
+      grid-template-columns: repeat(10, minmax(38.25px, -webkit-max-content));
+      grid-template-columns: repeat(10, minmax(38.25px, max-content));
+}
+
+.keyboard__key-group {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 3px;
+}
+
+/* Key */
+.keyboard__key {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 38.25px;
+  height: 38.25px;
+  padding: 4px;
+  border: 0;
+  border-radius: 2.25px;
+  color: #dddee2;
+  background-color: #202125;
+  font-size: 0.75rem;
+  /* 
+  * Key Variations 
+  *   Backspace
+  *   Tab
+  *   Enter
+  *   Capslock
+  *   Spacebar
+  *   Fn
+  *   Control
+  *   Arrow
+  *   Shift Left/Right
+  *   Option Left/Right
+  *   Command Left/Right
+  */
+  /* Backspace */
+  /* Tab */
+  /* Enter */
+  /* Capslock */
+  /* Spacebar */
+  /* Fn */
+  /* Control (Ctrl) */
+  /* Arrow */
+  /* Shift */
+  /* Option (Alt) */
+  /* Command */
+  /* States */
+}
+
+.keyboard__key--backspace {
+  width: 58.5px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.keyboard__key--tab {
+  width: 58.5px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.keyboard__key--enter {
+  position: relative;
+  border-bottom-right-radius: 0;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.keyboard__key--enter::after {
+  content: "";
+  width: 27.54px;
+  height: calc(100% + 5% + 3px);
+  background-color: #202125;
+  position: absolute;
+  top: 95%;
+  right: 0;
+  border-bottom-left-radius: 2.25px;
+  border-bottom-right-radius: 2.25px;
+}
+
+.keyboard__key--capslock {
+  width: 68.25px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.keyboard__key--spacebar {
+  width: 203.25px;
+}
+
+.keyboard__key--fn {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  font-size: 0.45rem;
+}
+
+.keyboard__key--control {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  font-size: 0.45rem;
+}
+
+.keyboard__key--arrow--down, .keyboard__key--arrow--up {
+  height: 17.625px;
+}
+
+.keyboard__key--arrow--down svg {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.keyboard__key--arrow--left svg {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.keyboard__key--arrow--right svg {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.keyboard__key--shift {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.keyboard__key--shift--left {
+  width: 48px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.keyboard__key--shift--right {
+  width: 90px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.keyboard__key--option {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 0.45rem;
+}
+
+.keyboard__key--option--left {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.keyboard__key--option--right {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.keyboard__key--command {
+  width: 48px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 0.45rem;
+}
+
+.keyboard__key--command--left {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.keyboard__key--command--right {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.keyboard__key.has-light::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #dddee2;
+}
+
+.keyboard__key.has-light.is-pressed::before, .keyboard__key.has-light:active::before, .keyboard__key.has-light:hover::before, .keyboard__key.has-light:focus::before {
+  background-color: #90D86D;
+}
+
+.keyboard__key.has-double-children {
+  font-size: 0.6rem;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.keyboard__key__icon {
+  fill: #dddee2;
+  max-width: 100%;
+}
+
+.keyboard__key--command .keyboard__key__icon {
+  width: 7.5px;
+  height: 7.5px;
+}
+
+.keyboard__key--control .keyboard__key__icon {
+  width: 8.25px;
+  height: 6px;
+}
+
+.keyboard__key--enter .keyboard__key__icon {
+  width: 15px;
+  height: 10.5px;
+}
+
+.keyboard__key--backspace .keyboard__key__icon {
+  width: 15.75px;
+  height: 11.25px;
+}
+
+.keyboard__key--tab .keyboard__key__icon {
+  width: 20.25px;
+  height: 11.25px;
+}
+
+.keyboard__key--shift .keyboard__key__icon {
+  width: 13.5px;
+  height: 11.25px;
+}
+
+.keyboard__key--arrow .keyboard__key__icon {
+  width: 7.5px;
+  height: 7.5px;
+}
+
+.keyboard__key--arrow--down .keyboard__key__icon {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.keyboard__key--arrow--left .keyboard__key__icon {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.keyboard__key--arrow--right .keyboard__key__icon {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+/* Touchpad */
+.touchpad {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: touchpad;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: 345px;
+  height: 216px;
+  border-radius: 5px;
+  background-color: #edeef0;
+}
+/*# sourceMappingURL=style.css.map */

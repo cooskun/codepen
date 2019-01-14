@@ -1,0 +1,11 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: $blue-light;
+  background-image: linear-gradient(135deg, $blue-light 0%, $purple 100%);
+}

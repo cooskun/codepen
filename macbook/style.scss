@@ -1,0 +1,480 @@
+@import "settings.scss";
+@import "placeholders.scss";
+@import "base.scss";
+
+/* Scene */
+.scene {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Macbook Body */
+.macbook__body {
+  display: grid;
+  grid-gap: 7.5px 4px;
+  grid-template-rows: auto;
+  grid-template-columns: $speaker-width $keyboard-width--outer $speaker-width;
+  grid-template-areas: "left-speaker keyboard right-speaker" ". touchpad .";  
+  justify-content: center;  
+  width: $macbook-width;
+  height: $macbook-height;
+  padding-top: $macbook-padding--top;
+  padding-bottom: $macbook-padding--bottom;
+  position: relative;  
+  border-radius: 16px;
+  background-color: $silver;
+
+  &__snick {
+    width: $snick-width;
+    height: $snick-height;
+    box-shadow: inset 1px 1px 3px $gray;
+    border-radius: 7px 7px 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Speaker */
+.speaker {  
+  width: $speaker-width;
+  height: $speaker-height;
+  align-self: center;
+  background: $speaker-mesh-svg repeat;
+  background-size: $speaker-mesh-size;
+
+  &--left {
+    grid-area: left-speaker;
+  }
+  &--right {
+    grid-area: right-speaker;
+  }
+}
+
+/* Keyboard Group: Touchbar and Keyboard */
+.keyboard-group {
+  display: grid;
+  grid-gap: $key-gap-size;
+  grid-area: keyboard;
+  align-self: center;
+  width: $keyboard-width--outer;
+  padding: $keyboard-padding;
+  overflow: hidden;  
+  border-radius: 4px;  
+  background-color: $silver;
+  @extend %inset-shadow;
+}
+
+/* Touchbar */
+.touchbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: $keyboard-width--inner;
+  padding: 5px 24px;
+  background-color: $black;
+  border-radius: 3px;  
+}
+
+/* Touchbar Key Group */
+.touchbar__key-group {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-column-gap: 3px;
+  position: relative;
+  z-index: 1;
+
+  &--functions {
+    grid-template-columns: repeat(5, auto);
+    grid-column-gap: 1px;
+  }
+}
+
+/* Touchbar Key */
+.touchbar__key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $key-size--touchbar;
+  height: $key-size--touchbar--height;
+  padding: 0;
+  border: 0;
+  border-radius: $key-radius;
+  color: $white;
+  background-color: $gray-darker;
+  font-size: $font-size--sm;
+
+  .touchbar__key-group--functions & {
+    border-radius: 0;
+
+    &:first-child {
+      border-top-left-radius: $key-radius;
+      border-bottom-left-radius: $key-radius;
+    }
+
+    &:last-child {
+      border-top-right-radius: $key-radius;
+      border-bottom-right-radius: $key-radius;
+    }
+  }
+
+  &--esc {
+    margin-right: 3px;    
+  }
+
+  &--left {
+    width: 7.5px;
+  }
+
+  &__icon {
+    max-width: 70%;
+    max-height: 70%;
+    fill: currentColor;
+
+    // Parental State
+    .touchbar__key--left & {
+      max-width: 100%;;
+      max-height: 100%;
+    }
+  }
+}
+
+/* Touchbar Frame Group */
+.touchbar__frame-group {
+  display: grid;
+  grid-template-columns: repeat(36, $touchbar-frame-width);
+  grid-column-gap: 1px; 
+  position: relative; 
+
+  &::before,
+  &::after {
+    content: "";
+    width: 22.5px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+
+  &::before {
+    left: 0;
+    background-image: linear-gradient(90deg, rgba(0,0,0,1) 10%, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0.2) 90%, rgba(0,0,0,0.1) 100%);
+  }
+
+  &::after {
+    right: 0;
+    background-image: linear-gradient(-90deg, rgba(0,0,0,1) 10%, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0.3) 80%, rgba(0,0,0,0.2) 90%, rgba(0,0,0,0.1) 100%);
+  }
+}
+
+/* Touchbar Frame */
+.touchbar__frame {
+  width: $touchbar-frame-width;
+  height: $touchbar-frame-height;
+  @extend %touchbar-frame-animation-setup;
+
+  @for $i from 1 through 36 {
+    &:nth-of-type(#{$i}) {
+      background-color: $blue;
+      background-image: linear-gradient(#{$i * 10}deg, $yellow 25%, $blue 100%);
+    }
+  }
+
+  &.active,
+  &:hover,
+  &:focus {
+    @extend %touchbar-frame-animation;
+  }
+}
+
+/* Keyboard */
+.keyboard {  
+  display: grid;
+  grid-gap: $key-gap-size;  
+  width: $keyboard-width--inner; 
+}
+
+/* Keyboard Row */
+.keyboard__row {
+  display: grid;
+  grid-gap: $key-gap-size;
+  grid-template-columns: repeat(14, minmax($key-size--default, max-content));  
+
+  &:nth-child(3) {
+    grid-template-columns: repeat(14, minmax($key-size--enter--small, max-content));
+  }
+  &:nth-child(4) {
+    grid-template-columns: repeat(13, minmax($key-size--default, max-content));
+  }
+  &:last-child {
+    grid-template-columns: repeat(10, minmax($key-size--default, max-content))
+  }
+}
+
+// Key Group
+.keyboard__key-group {
+  display: grid;
+  grid-gap: $key-gap-size;
+}
+
+/* Key */
+.keyboard__key {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: $key-size--default;
+  height: $key-size--default;
+  padding: 4px;
+  border: 0;
+  border-radius: $key-radius;
+  color: $white;
+  background-color: $black;
+  font-size: $font-size--default;
+  
+  @extend %key-shadow;
+  @extend %key-animation-setup;
+
+  &:hover,
+  &:focus {
+    @extend %key-animation;
+  }
+
+  /* 
+  * Key Variations 
+  *   Backspace
+  *   Tab
+  *   Enter
+  *   Capslock
+  *   Spacebar
+  *   Fn
+  *   Control
+  *   Arrow
+  *   Shift Left/Right
+  *   Option Left/Right
+  *   Command Left/Right
+  */
+
+  /* Backspace */
+  &--backspace {
+    width: $key-size--backspace;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  /* Tab */
+  &--tab {
+    width: $key-size--tab;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+
+  /* Enter */
+  &--enter {
+    position: relative;
+    border-bottom-right-radius: 0;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    &::after {
+      $extra-size: 5%;
+
+      content: "";
+      width: $key-size--enter--small;
+      height: calc(100% + #{$extra-size} + #{$key-gap-size});
+      background-color: $black;
+      position: absolute;
+      top: 100% - $extra-size;
+      right: 0;
+      border-bottom-left-radius: $key-radius;
+      border-bottom-right-radius: $key-radius;
+      @extend %key-shadow;
+      @extend %key-animation-setup;
+    }
+
+    &:hover,
+    &:focus {
+      &::after {
+        @extend %key-animation--enter;
+      }
+    }
+  }
+
+  /* Capslock */
+  &--capslock {
+    width: $key-size--capslock;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  /* Spacebar */
+  &--spacebar {
+    width: $key-size--spacebar;
+  }
+
+  /* Fn */
+  &--fn {
+    justify-content: flex-end;
+    align-items: flex-start;
+    font-size: $font-size--xs;
+  }
+
+  /* Control (Ctrl) */
+  &--control {
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: $font-size--xs;
+  }
+
+  /* Arrow */
+  &--arrow {
+    &--down, &--up {
+      height: $key-size--half;  
+    }
+    
+    &--down {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+    
+    &--left {
+      svg {
+        transform: rotate(-90deg);
+      }
+    }
+    
+    &--right {
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+  }  
+
+  /* Shift */
+  &--shift {    
+    justify-content: flex-end;
+    
+    &--left {
+      width: $key-size--shift--left;
+      align-items: flex-start;
+    }
+    &--right {
+      width: $key-size--shift--right;
+      align-items: flex-end;
+    }
+  }  
+
+  /* Option (Alt) */
+  &--option {
+    justify-content: space-between;
+    font-size: $font-size--xs;
+
+    &--left {
+      align-items: flex-end;
+    }
+    &--right {
+      align-items: flex-start;
+    }
+  }
+
+  /* Command */
+  &--command {
+    width: $key-size--command;
+    justify-content: space-between;
+    font-size: $font-size--xs;
+
+    &--left {
+      align-items: flex-end;
+    }
+    &--right {
+      align-items: flex-start;
+    }
+  } 
+  
+  /* States */
+  &.has-light {
+    &::before {
+      content: "";
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: $white;
+    }
+
+    &.is-pressed,
+    &:active,
+    &:hover,
+    &:focus {
+      &::before {
+        background-color: $green;
+      }
+    }
+  }
+
+  &.has-double-children {
+    font-size: $font-size--sm;
+    justify-content: space-between;
+  }
+}
+
+// Icons
+.keyboard__key__icon {    
+  fill: $white;
+  max-width: 100%;
+  
+  // Parent based state
+  .keyboard__key--command & {
+    width: 7.5px;
+    height: 7.5px;
+  }
+  .keyboard__key--control & {
+    width: 8.25px;
+    height: 6px;
+  }
+  .keyboard__key--enter & {
+    width: 15px;
+    height: 10.5px;
+  }
+  .keyboard__key--backspace & {
+    width: 15.75px; 
+    height: 11.25px;
+  }
+  .keyboard__key--tab & {
+    width: 20.25px;
+    height: 11.25px;
+  }
+  .keyboard__key--shift & {
+    width: 13.5px;
+    height: 11.25px;
+  }
+  .keyboard__key--arrow & {
+    width: 7.5px;
+    height: 7.5px;
+  }
+  .keyboard__key--arrow--down & {
+    transform: rotate(180deg);
+  }
+  .keyboard__key--arrow--left & {
+    transform: rotate(-90deg);
+  }
+  .keyboard__key--arrow--right & {
+    transform: rotate(90deg);
+  }
+}
+
+/* Touchpad */
+.touchpad {
+  grid-area: touchpad;
+  justify-self: center;
+  width: $touchpad-width;
+  height: $touchpad-height;
+  border-radius: 5px;
+  background-color: $silver;    
+  @extend %inset-shadow;
+}

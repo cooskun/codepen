@@ -1,0 +1,60 @@
+/* Colors */
+$black: #202125;
+$blue: #52ACFF;
+$blue-light: #8BC6EC;
+$gray: #88898b;
+$gray-darker: #525358;
+$green: #90D86D;
+$white: #dddee2;
+$purple: #9599E2;
+$silver: #edeef0;
+$yellow: #FFE32C;
+
+/* Typography */
+$font-size--default: .75rem;
+$font-size--sm: .6rem;
+$font-size--xs: .45rem;
+
+/* Key Sizes */
+$key-gap-size: 3px;  
+$key-size--default: 38.25px;
+$key-size--half: ($key-size--default - $key-gap-size) / 2;
+$key-size--touchbar: 33px;
+$key-size--touchbar--height: 15px;
+$key-size--tab: 58.5px;
+$key-size--command: 48px;
+$key-size--capslock: 68.25px;
+$key-size--backspace: 58.5px;
+$key-size--shift--left: 48px;
+$key-size--shift--right: 90px;
+$key-size--enter--small: $key-size--default * 0.72;
+$key-size--spacebar: ($key-size--default * 5) + ($key-gap-size * 4); // Equal to 5 letter keys + their gaps
+$key-radius: 2.25px;
+
+/* Other Options */
+$macbook-width: 780px;
+$macbook-height: 532.5px;
+$macbook-padding--top: 57px;
+$macbook-padding--bottom: 12px;
+
+$speaker-row-count: 50;
+$speaker-line-count: 150;
+$speaker-mesh-size: 1.5px;
+$speaker-width: ($speaker-row-count + ($speaker-row-count - 1)) * .75px;
+$speaker-height: (($speaker-line-count + ($speaker-line-count - 1)) * .75px);
+
+$touchbar-frame-width: 6.75px;
+$touchbar-frame-height: 12px;
+
+$keyboard-width--outer: 609px;
+$keyboard-width--inner: 594px;
+$keyboard-padding: ($keyboard-width--outer - $keyboard-width--inner) / 2;
+
+$touchpad-width: 345px;
+$touchpad-height: 216px;
+
+$snick-width: 108px;
+$snick-height: 4.5px;
+
+/* SVGs */
+$speaker-mesh-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="Capa_1" x="0px" y="0px" style="enable-background:new 0 0 88 88" version="1.1" viewBox="0 0 88 88" xml:space="preserve"><path d="M11,0C4.926,0,0,4.926,0,11s4.926,11,11,11s11-4.926,11-11S17.074,0,11,0z"/></svg>');
