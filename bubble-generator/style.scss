@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  top: 100%;
+  border-radius: 50%;
+  animation: bubble linear;
+
+  @at-root {
+    @keyframes bubble {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-300vh);
+      }
+    }
+  }
+}
+
+
