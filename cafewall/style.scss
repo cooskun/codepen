@@ -1,0 +1,62 @@
+$pattern-color-1: #fff;
+$pattern-color-2: #000;
+
+$border-size: 3px;
+$border-color: gray;
+
+$scene-height: 1280px;
+
+$row-count: 16;
+$column-count: 8;
+$column-width: ($scene-height / $column-count);
+$column-height: ($scene-height / $row-count);
+$column-height-filtered: calc(#{$column-height} - #{$border-size});
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.cafe-wall {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat($row-count, $column-height);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  align-self: center;
+}
+
+.cafe-wall__row {
+  background-repeat: repeat-x;
+  background-size: $column-width $column-height-filtered;
+  
+  &:nth-child(odd) {
+    background-image: linear-gradient(to right, $pattern-color-1 0%,$pattern-color-1 50%,$pattern-color-2 51%,$pattern-color-2 100%);
+  }
+  &:nth-child(even) {
+    background-image: linear-gradient(to left, $pattern-color-1 0%,$pattern-color-1 50%,$pattern-color-2 51%,$pattern-color-2 100%);
+  }
+
+  @for $i from 1 through $row-count {
+    $x-way: '';  
+    $random-position: random(floor($column-width / 2));
+
+    &:nth-child(#{$i}) {
+      @if $i % 2 == 0 {
+        $x-way: '-';
+      }
+
+      background-position-x: unquote($random-position) + px;
+    }
+  }
+
+  &:not(:last-child) {
+    border-bottom: $border-size solid $border-color; 
+  }
+}

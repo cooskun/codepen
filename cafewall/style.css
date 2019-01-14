@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.cafe-wall {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  -ms-grid-rows: (80px)[16];
+      grid-template-rows: repeat(16, 80px);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.cafe-wall__row {
+  background-repeat: repeat-x;
+  background-size: 160px calc(80px - 3px);
+}
+
+.cafe-wall__row:nth-child(odd) {
+  background-image: -webkit-gradient(linear, left top, right top, from(#fff), color-stop(50%, #fff), color-stop(51%, #000), to(#000));
+  background-image: linear-gradient(to right, #fff 0%, #fff 50%, #000 51%, #000 100%);
+}
+
+.cafe-wall__row:nth-child(even) {
+  background-image: -webkit-gradient(linear, right top, left top, from(#fff), color-stop(50%, #fff), color-stop(51%, #000), to(#000));
+  background-image: linear-gradient(to left, #fff 0%, #fff 50%, #000 51%, #000 100%);
+}
+
+.cafe-wall__row:nth-child(1) {
+  background-position-x: 11px;
+}
+
+.cafe-wall__row:nth-child(2) {
+  background-position-x: 80px;
+}
+
+.cafe-wall__row:nth-child(3) {
+  background-position-x: 15px;
+}
+
+.cafe-wall__row:nth-child(4) {
+  background-position-x: 33px;
+}
+
+.cafe-wall__row:nth-child(5) {
+  background-position-x: 75px;
+}
+
+.cafe-wall__row:nth-child(6) {
+  background-position-x: 12px;
+}
+
+.cafe-wall__row:nth-child(7) {
+  background-position-x: 40px;
+}
+
+.cafe-wall__row:nth-child(8) {
+  background-position-x: 58px;
+}
+
+.cafe-wall__row:nth-child(9) {
+  background-position-x: 12px;
+}
+
+.cafe-wall__row:nth-child(10) {
+  background-position-x: 45px;
+}
+
+.cafe-wall__row:nth-child(11) {
+  background-position-x: 31px;
+}
+
+.cafe-wall__row:nth-child(12) {
+  background-position-x: 24px;
+}
+
+.cafe-wall__row:nth-child(13) {
+  background-position-x: 40px;
+}
+
+.cafe-wall__row:nth-child(14) {
+  background-position-x: 80px;
+}
+
+.cafe-wall__row:nth-child(15) {
+  background-position-x: 73px;
+}
+
+.cafe-wall__row:nth-child(16) {
+  background-position-x: 64px;
+}
+
+.cafe-wall__row:not(:last-child) {
+  border-bottom: 3px solid gray;
+}
+/*# sourceMappingURL=style.css.map */
